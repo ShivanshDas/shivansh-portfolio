@@ -174,16 +174,14 @@ h1 .g{background:linear-gradient(120deg,var(--blue),var(--indigo) 50%,var(--rose
 .sp:hover{background:rgba(56,189,248,.07);border-color:rgba(56,189,248,.3);color:var(--blue)}
 
 /* ─── Education ─── */
-.edurows{display:flex;flex-direction:column;margin-top:2.5rem;border:1px solid var(--border);border-radius:.75rem;overflow:hidden}
-.edur{display:flex;align-items:center;padding:.9rem 1.5rem;border-bottom:1px solid var(--border);border-left:2px solid transparent;gap:1.5rem;transition:background .25s}
-.edur:last-child{border-bottom:none}
-.edur:hover{background:rgba(255,255,255,.025)}
-.edur:nth-child(1){border-left-color:var(--blue)}.edur:nth-child(1) .edudeg{color:var(--blue)}
-.edur:nth-child(2){border-left-color:var(--indigo)}.edur:nth-child(2) .edudeg{color:var(--indigo)}
-.edur:nth-child(3){border-left-color:var(--rose)}.edur:nth-child(3) .edudeg{color:var(--rose)}
-.edudeg{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;white-space:nowrap;flex-shrink:0}
-.eduinst{font-size:.88rem;font-weight:600;color:var(--text);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.eduyear{font-size:.75rem;color:var(--muted);white-space:nowrap;flex-shrink:0}
+.edugrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.educ{background:var(--s1);border:1px solid var(--border);border-radius:.75rem;padding:1.5rem;position:relative;overflow:hidden;transition:border-color .25s,transform .25s}
+.educ::after{content:'';position:absolute;top:0;left:0;right:0;height:1.5px}
+.educ:nth-child(1)::after{background:linear-gradient(90deg,var(--blue),var(--indigo))}.educ:nth-child(2)::after{background:linear-gradient(90deg,var(--indigo),var(--rose))}.educ:nth-child(3)::after{background:linear-gradient(90deg,var(--rose),var(--blue))}
+.educ:hover{border-color:var(--border2);transform:translateY(-3px)}
+.edudeg{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--indigo);margin-bottom:.5rem}
+.eduinst{font-size:.8rem;font-weight:600;margin-bottom:.4rem;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.eduyear{font-size:.78rem;color:var(--muted)}
 
 /* ─── Projects ─── */
 #projbg{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -222,7 +220,7 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;jus
   .agrid{grid-template-columns:1fr;gap:2.5rem}
   .sgrid{grid-template-columns:repeat(2,1fr)}.sc:nth-child(2){border-right:none}.sc:nth-child(3){border-top:1px solid var(--border)}
   .skrow{grid-template-columns:1fr;gap:.6rem}
-  .edur{flex-wrap:wrap;gap:.4rem}.edudeg{width:auto}.eduyear{margin-left:0}
+  .edugrid{grid-template-columns:1fr}
   .pgrid{grid-template-columns:1fr 1fr}
   .hstats{max-width:100%}
   footer{flex-direction:column;gap:.5rem;text-align:center}
@@ -536,18 +534,18 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;jus
   <div class="wrap" id="education">
     <div class="r"><p class="lbl">// education</p></div>
     <div class="r d1"><h2 class="stitle">Academic <span>Background</span></h2></div>
-    <div class="edurows r d2">
-      <div class="edur">
+    <div class="edugrid r d2">
+      <div class="educ">
         <div class="edudeg">B.Tech · Information Technology</div>
         <div class="eduinst">Bharati Vidyapeeth's College of Engineering</div>
         <div class="eduyear">Nov 2022 — Aug 2026</div>
       </div>
-      <div class="edur">
+      <div class="educ">
         <div class="edudeg">Secondary · Class XII</div>
         <div class="eduinst">The Air Force School (TAFS), Subroto Park</div>
         <div class="eduyear">2021 — 2022</div>
       </div>
-      <div class="edur">
+      <div class="educ">
         <div class="edudeg">Secondary · Class X</div>
         <div class="eduinst">The Air Force School (TAFS), Subroto Park</div>
         <div class="eduyear">2019 — 2020</div>
