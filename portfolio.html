@@ -51,13 +51,9 @@ canvas{position:absolute;inset:0;z-index:0;opacity:.45}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
 h1{font-size:clamp(2.8rem,8vw,6.5rem);font-weight:700;letter-spacing:-.03em;line-height:.95;margin-bottom:1.25rem;animation:up .7s .25s both;background:linear-gradient(120deg,var(--text) 0%,var(--blue) 40%,var(--indigo) 70%,var(--rose) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 h1 .g{background:linear-gradient(120deg,var(--blue),var(--indigo) 50%,var(--rose));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hsub{margin-bottom:2.75rem;animation:up .7s .4s both;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.6rem}
-.hroleline{display:flex;align-items:center;justify-content:center;gap:.65rem;flex-wrap:nowrap}
-.hrole{font-size:clamp(1.05rem,2.2vw,1.22rem);color:var(--text);font-weight:600;letter-spacing:-.022em;white-space:nowrap}
-.hatsep{width:1px;height:15px;background:var(--border2);flex-shrink:0}
-.horg{font-size:clamp(1.05rem,2.2vw,1.22rem);color:var(--subtle);font-weight:400;letter-spacing:-.015em;white-space:nowrap}
-.ycw{font-family:'JetBrains Mono',monospace;font-size:.57rem;color:var(--rose);background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.25);padding:.12rem .45rem;border-radius:.25rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;vertical-align:middle;margin-left:.35rem}
-.hmetaline{font-size:.87rem;color:var(--muted);letter-spacing:.01em;text-align:center}
+.hsub{margin-bottom:2.75rem;animation:up .7s .4s both;text-align:center}
+.hsubtxt{font-size:clamp(.88rem,1.7vw,1rem);color:var(--subtle);font-weight:400;letter-spacing:.005em;line-height:1.6}
+.ycw{font-family:'JetBrains Mono',monospace;font-size:.57rem;color:var(--rose);background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.25);padding:.12rem .45rem;border-radius:.25rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;vertical-align:middle;margin-left:.3rem;margin-right:.1rem}
 .ctarow{display:flex;gap:.9rem;justify-content:center;align-items:center;flex-wrap:wrap;animation:up .7s .55s both;margin-top:.35rem}
 .btn{display:inline-block;padding:.75rem 1.9rem;border-radius:.5rem;font-size:.84rem;font-weight:500;text-decoration:none;transition:all .22s;letter-spacing:.02em}
 .bp,.bn{background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff}
@@ -239,12 +235,7 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;jus
   <div class="hi">
     <h1>Shivansh Das</h1>
     <div class="hsub">
-      <div class="hroleline">
-        <span class="hrole">Developer Relations Engineer</span>
-        <span class="hatsep"></span>
-        <span class="horg">RunAnywhere <span class="ycw">YC W26</span></span>
-      </div>
-      <div class="hmetaline">Co-Founder @ Singularity &nbsp;·&nbsp; Delhi, India</div>
+      <p class="hsubtxt">Developer Relations Engineer @ RunAnywhere <span class="ycw">YC W26</span> &nbsp;·&nbsp; Co-Founder @ Singularity &nbsp;·&nbsp; Delhi, India</p>
     </div>
     <div class="ctarow">
       <a href="#experience" class="ctalink">View Experience</a>
