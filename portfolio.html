@@ -48,8 +48,8 @@ h1 .g{background:linear-gradient(120deg,var(--blue),var(--indigo) 50%,var(--rose
 .hsub strong{color:var(--text);font-weight:500}
 .ctarow{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;animation:up .7s .55s both}
 .btn{display:inline-block;padding:.7rem 1.75rem;border-radius:.5rem;font-size:.85rem;font-weight:500;text-decoration:none;transition:all .22s;letter-spacing:.01em}
-.bp{background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;box-shadow:0 0 0 rgba(56,189,248,0)}
-.bp:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(56,189,248,.25)}
+.bp,.bn{background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;box-shadow:0 0 0 rgba(56,189,248,0)}
+.bp:hover,.bn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(56,189,248,.25)}
 .bs{background:transparent;color:var(--subtle);border:1px solid var(--border2)}
 .bs:hover{color:var(--text);border-color:rgba(255,255,255,.2);transform:translateY(-2px)}
 .sdot{position:absolute;bottom:1.75rem;left:50%;transform:translateX(-50%);z-index:1;display:flex;flex-direction:column;align-items:center;gap:.5rem}
@@ -183,7 +183,6 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;jus
 
 <!-- Nav -->
 <nav id="nav">
-  <a href="#" class="logo">Shivansh <b>Das</b></a>
   <ul class="nl">
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
@@ -197,14 +196,14 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;jus
   <canvas id="cvs"></canvas>
   <div class="hi">
     <div class="htag">DevRel · Community · Builder</div>
-    <h1>Shivansh <span class="g">Das.</span></h1>
+    <h1>Shivansh Das</h1>
     <p class="hsub">
-      <strong>Developer Relations Engineer</strong> at RunAnywhere (YC W26)<br>
-      Co-Founder @ Singularity<br>
-      Delhi, India
+      <strong>Developer Relations Engineer @ RunAnywhere (YC W26)</strong><br>
+      <strong>Co-Founder @ Singularity</strong><br>
+      <strong>Delhi, India</strong>
     </p>
     <div class="ctarow">
-      <a href="#experience" class="btn bp">View Experience</a>
+      <a href="#experience" class="btn bn">View Experience</a>
       <a href="#contact" class="btn bs">Get in Touch</a>
     </div>
   </div>
