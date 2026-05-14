@@ -157,19 +157,14 @@ h1 .g{background:linear-gradient(120deg,var(--blue),var(--indigo) 50%,var(--rose
 .bco{background:rgba(52,211,153,.1);color:#34d399;border:1px solid rgba(52,211,153,.2)}
 
 /* ─── Skills ─── */
-.skgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2.5rem}
-.skbox{background:var(--s1);border:1px solid var(--border);border-radius:.75rem;padding:1.5rem;transition:border-color .25s,transform .25s;position:relative;overflow:hidden}
-.skbox::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;border-radius:.75rem .75rem 0 0}
-.skbox:nth-child(1)::before{background:linear-gradient(90deg,var(--blue),var(--indigo))}
-.skbox:nth-child(2)::before{background:linear-gradient(90deg,var(--indigo),var(--rose))}
-.skbox:nth-child(3)::before{background:linear-gradient(90deg,var(--rose),var(--blue))}
-.skbox:nth-child(4)::before{background:linear-gradient(90deg,var(--blue),#34d399)}
-.skbox:hover{border-color:var(--border2);transform:translateY(-2px)}
-.skttl{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--indigo);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
-.skttl::before{content:'//';color:var(--blue);font-size:.65rem}
+.skrows{display:flex;flex-direction:column;margin-top:2.5rem;border:1px solid var(--border);border-radius:.75rem;overflow:hidden}
+.skrow{display:grid;grid-template-columns:175px 1fr;gap:2rem;padding:1.15rem 1.75rem;border-bottom:1px solid var(--border);align-items:center;transition:background .2s}
+.skrow:last-child{border-bottom:none}
+.skrow:hover{background:rgba(255,255,255,.02)}
+.skcat{font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);font-weight:500;line-height:1.5;flex-shrink:0}
 .skpills{display:flex;flex-wrap:wrap;gap:.4rem}
-.sp{font-size:.76rem;padding:.3rem .85rem;border-radius:.4rem;background:rgba(255,255,255,.03);border:1px solid var(--border);color:var(--subtle);transition:all .18s;cursor:default}
-.sp:hover{background:rgba(56,189,248,.06);border-color:rgba(56,189,248,.25);color:var(--blue);transform:translateY(-1px)}
+.sp{font-size:.76rem;padding:.28rem .75rem;border-radius:.35rem;background:rgba(255,255,255,.03);border:1px solid var(--border);color:var(--subtle);transition:all .18s;cursor:default;white-space:nowrap}
+.sp:hover{background:rgba(56,189,248,.06);border-color:rgba(56,189,248,.25);color:var(--blue)}
 
 /* ─── Education ─── */
 .edugrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
@@ -217,7 +212,7 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;jus
   .wrap{padding:4rem 1.5rem}
   .agrid{grid-template-columns:1fr;gap:2.5rem}
   .sgrid{grid-template-columns:repeat(2,1fr)}.sc:nth-child(2){border-right:none}.sc:nth-child(3){border-top:1px solid var(--border)}
-  .skgrid{grid-template-columns:1fr}
+  .skrow{grid-template-columns:1fr;gap:.6rem}
   .edugrid{grid-template-columns:1fr}
   .pgrid{grid-template-columns:1fr 1fr}
   .hstats{max-width:100%}
@@ -494,34 +489,34 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;jus
 <div id="skills" class="wrap">
   <div class="r"><p class="lbl">// skills</p></div>
   <div class="r d1"><h2 class="stitle">Technical <span>Toolkit</span></h2></div>
-  <div class="skgrid r d2">
-    <div class="skbox">
-      <div class="skttl">Languages & Frameworks</div>
-      <div class="skpills">
-        <span class="sp">React.js</span><span class="sp">Next.js</span><span class="sp">Node.js</span>
-        <span class="sp">JavaScript</span><span class="sp">HTML/CSS</span><span class="sp">Python</span>
-      </div>
+  <div class="skrows r d2">
+    <div class="skrow">
+      <div class="skcat">Languages & Frameworks</div>
+      <div class="skpills"><span class="sp">Python</span><span class="sp">JavaScript</span><span class="sp">TypeScript</span><span class="sp">Node.js</span><span class="sp">React.js</span><span class="sp">Next.js</span><span class="sp">HTML/CSS</span></div>
     </div>
-    <div class="skbox">
-      <div class="skttl">Networks & Security</div>
-      <div class="skpills">
-        <span class="sp">TCP/IP</span><span class="sp">Routing & Switching</span><span class="sp">Cisco Packet Tracer</span>
-        <span class="sp">Ethical Hacking</span><span class="sp">API Testing</span>
-      </div>
+    <div class="skrow">
+      <div class="skcat">Platforms & APIs</div>
+      <div class="skpills"><span class="sp">Slack API</span><span class="sp">Notion API</span><span class="sp">Telegram</span><span class="sp">GitHub Actions</span><span class="sp">Google Sheets</span></div>
     </div>
-    <div class="skbox">
-      <div class="skttl">DevRel & Community</div>
-      <div class="skpills">
-        <span class="sp">Developer Relations</span><span class="sp">Community Building</span>
-        <span class="sp">Hackathon Design</span><span class="sp">Open Source</span><span class="sp">Ecosystem Growth</span>
-      </div>
+    <div class="skrow">
+      <div class="skcat">Infrastructure</div>
+      <div class="skpills"><span class="sp">Vercel</span><span class="sp">Railway</span><span class="sp">Supabase</span><span class="sp">Render</span></div>
     </div>
-    <div class="skbox">
-      <div class="skttl">Strategy & Leadership</div>
-      <div class="skpills">
-        <span class="sp">Go-to-Market</span><span class="sp">Program Management</span>
-        <span class="sp">Partnerships</span><span class="sp">Team Leadership</span><span class="sp">Product Strategy</span>
-      </div>
+    <div class="skrow">
+      <div class="skcat">LLMs & AI</div>
+      <div class="skpills"><span class="sp">Claude API</span><span class="sp">Groq</span></div>
+    </div>
+    <div class="skrow">
+      <div class="skcat">Networks & Security</div>
+      <div class="skpills"><span class="sp">TCP/IP</span><span class="sp">Routing & Switching</span><span class="sp">Ethical Hacking</span><span class="sp">API Testing</span></div>
+    </div>
+    <div class="skrow">
+      <div class="skcat">DevRel & Community</div>
+      <div class="skpills"><span class="sp">Developer Relations</span><span class="sp">Community Building</span><span class="sp">Hackathon Design</span><span class="sp">Open Source</span><span class="sp">Ecosystem Growth</span></div>
+    </div>
+    <div class="skrow">
+      <div class="skcat">Strategy & Leadership</div>
+      <div class="skpills"><span class="sp">Go-to-Market</span><span class="sp">Program Management</span><span class="sp">Partnerships</span><span class="sp">Team Leadership</span><span class="sp">Product Strategy</span></div>
     </div>
   </div>
 </div>
