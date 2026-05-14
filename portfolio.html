@@ -158,13 +158,20 @@ h1 .g{background:linear-gradient(120deg,var(--blue),var(--indigo) 50%,var(--rose
 
 /* ─── Skills ─── */
 .skrows{display:flex;flex-direction:column;margin-top:2.5rem;border:1px solid var(--border);border-radius:.75rem;overflow:hidden}
-.skrow{display:grid;grid-template-columns:175px 1fr;gap:2rem;padding:1.15rem 1.75rem;border-bottom:1px solid var(--border);align-items:center;transition:background .2s}
+.skrow{display:grid;grid-template-columns:175px 1fr;gap:2rem;padding:1.3rem 1.75rem;border-bottom:1px solid var(--border);border-left:2px solid transparent;align-items:center;transition:background .25s}
 .skrow:last-child{border-bottom:none}
-.skrow:hover{background:rgba(255,255,255,.02)}
-.skcat{font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);font-weight:500;line-height:1.5;flex-shrink:0}
+.skrow:hover{background:rgba(255,255,255,.025)}
+.skrow:nth-child(1){border-left-color:var(--blue)}.skrow:nth-child(1) .skcat{color:var(--blue)}
+.skrow:nth-child(2){border-left-color:var(--indigo)}.skrow:nth-child(2) .skcat{color:var(--indigo)}
+.skrow:nth-child(3){border-left-color:var(--rose)}.skrow:nth-child(3) .skcat{color:var(--rose)}
+.skrow:nth-child(4){border-left-color:#34d399}.skrow:nth-child(4) .skcat{color:#34d399}
+.skrow:nth-child(5){border-left-color:#fb923c}.skrow:nth-child(5) .skcat{color:#fb923c}
+.skrow:nth-child(6){border-left-color:var(--blue)}.skrow:nth-child(6) .skcat{color:var(--blue)}
+.skrow:nth-child(7){border-left-color:var(--indigo)}.skrow:nth-child(7) .skcat{color:var(--indigo)}
+.skcat{font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;flex-shrink:0;line-height:1.5}
 .skpills{display:flex;flex-wrap:wrap;gap:.4rem}
 .sp{font-size:.76rem;padding:.28rem .75rem;border-radius:.35rem;background:rgba(255,255,255,.03);border:1px solid var(--border);color:var(--subtle);transition:all .18s;cursor:default;white-space:nowrap}
-.sp:hover{background:rgba(56,189,248,.06);border-color:rgba(56,189,248,.25);color:var(--blue)}
+.sp:hover{background:rgba(56,189,248,.07);border-color:rgba(56,189,248,.3);color:var(--blue)}
 
 /* ─── Education ─── */
 .edugrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
