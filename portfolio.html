@@ -44,7 +44,7 @@ nav.on{background:rgba(7,7,18,.9);border-color:var(--border);backdrop-filter:blu
     radial-gradient(ellipse at 65% 80%,rgba(244,63,94,.1) 0%,transparent 42%),
     var(--bg);
 }
-canvas{position:absolute;inset:0;z-index:0;opacity:.9}
+canvas{position:absolute;inset:0;z-index:0;opacity:.45}
 .hi{position:relative;z-index:1;text-align:center;padding:0 1.5rem}
 .htag{display:inline-flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);border:1px solid rgba(56,189,248,.3);background:rgba(56,189,248,.07);padding:.35rem 1rem;border-radius:2rem;margin-bottom:1.5rem;animation:up .7s .1s both;box-shadow:0 0 20px rgba(56,189,248,.08)}
 .htag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pulse 2s infinite;flex-shrink:0}
@@ -52,13 +52,12 @@ canvas{position:absolute;inset:0;z-index:0;opacity:.9}
 h1{font-size:clamp(2.8rem,8vw,6.5rem);font-weight:700;letter-spacing:-.03em;line-height:.95;margin-bottom:1.25rem;animation:up .7s .25s both;background:linear-gradient(120deg,var(--text) 0%,var(--blue) 40%,var(--indigo) 70%,var(--rose) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 h1 .g{background:linear-gradient(120deg,var(--blue),var(--indigo) 50%,var(--rose));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hsub{margin-bottom:2.75rem;animation:up .7s .4s both;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.6rem}
-.hroleline{display:flex;align-items:center;justify-content:center;gap:.7rem;flex-wrap:wrap}
-.hrole{font-size:clamp(1.05rem,2.2vw,1.22rem);color:var(--text);font-weight:600;letter-spacing:-.022em}
-.hatsep{width:1px;height:15px;background:var(--border2);flex-shrink:0;display:inline-block}
-.horg{font-size:clamp(1.05rem,2.2vw,1.22rem);color:var(--subtle);font-weight:400;letter-spacing:-.015em}
+.hroleline{display:flex;align-items:center;justify-content:center;gap:.65rem;flex-wrap:nowrap}
+.hrole{font-size:clamp(1.05rem,2.2vw,1.22rem);color:var(--text);font-weight:600;letter-spacing:-.022em;white-space:nowrap}
+.hatsep{width:1px;height:15px;background:var(--border2);flex-shrink:0}
+.horg{font-size:clamp(1.05rem,2.2vw,1.22rem);color:var(--subtle);font-weight:400;letter-spacing:-.015em;white-space:nowrap}
 .ycw{font-family:'JetBrains Mono',monospace;font-size:.57rem;color:var(--rose);background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.25);padding:.12rem .45rem;border-radius:.25rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;vertical-align:middle;margin-left:.35rem}
-.hmetaline{display:flex;align-items:center;justify-content:center;gap:.55rem;font-size:.87rem;color:var(--muted);letter-spacing:.01em;flex-wrap:wrap}
-.hmetasep{color:var(--border2)}
+.hmetaline{font-size:.87rem;color:var(--muted);letter-spacing:.01em;text-align:center}
 .ctarow{display:flex;gap:.9rem;justify-content:center;align-items:center;flex-wrap:wrap;animation:up .7s .55s both;margin-top:.35rem}
 .btn{display:inline-block;padding:.75rem 1.9rem;border-radius:.5rem;font-size:.84rem;font-weight:500;text-decoration:none;transition:all .22s;letter-spacing:.02em}
 .bp,.bn{background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff}
@@ -245,14 +244,10 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;jus
         <span class="hatsep"></span>
         <span class="horg">RunAnywhere <span class="ycw">YC W26</span></span>
       </div>
-      <div class="hmetaline">
-        <span>Co-Founder @ Singularity</span>
-        <span class="hmetasep">·</span>
-        <span>Delhi, India</span>
-      </div>
+      <div class="hmetaline">Co-Founder @ Singularity &nbsp;·&nbsp; Delhi, India</div>
     </div>
     <div class="ctarow">
-      <a href="#experience" class="btn bn">View Experience</a>
+      <a href="#experience" class="ctalink">View Experience</a>
       <a href="#contact" class="ctalink">Get in Touch</a>
     </div>
   </div>
@@ -562,9 +557,9 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;jus
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           LinkedIn
         </a>
-        <a href="mailto:shivanshdas@gmail.com" class="soc">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Email
+        <a href="https://github.com/ShivanshDas" target="_blank" rel="noopener" class="soc">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
         </a>
       </div>
     </div>
