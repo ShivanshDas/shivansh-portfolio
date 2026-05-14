@@ -51,21 +51,22 @@ canvas{position:absolute;inset:0;z-index:0;opacity:.9}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
 h1{font-size:clamp(2.8rem,8vw,6.5rem);font-weight:700;letter-spacing:-.03em;line-height:.95;margin-bottom:1.25rem;animation:up .7s .25s both;background:linear-gradient(120deg,var(--text) 0%,var(--blue) 40%,var(--indigo) 70%,var(--rose) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 h1 .g{background:linear-gradient(120deg,var(--blue),var(--indigo) 50%,var(--rose));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hsub{margin-bottom:2.5rem;animation:up .7s .4s both;text-align:center}
-.hrole{display:block;font-size:clamp(1rem,2vw,1.18rem);color:var(--text);font-weight:600;margin-bottom:.35rem;letter-spacing:-.02em;line-height:1.35}
-.hrole .hcomp{color:var(--subtle);font-weight:400}
-.hrole .ycw{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--rose);background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.2);padding:.1rem .42rem;border-radius:.25rem;vertical-align:middle;margin-left:.4rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase}
-.hmeta{display:block;font-size:.85rem;color:var(--muted);letter-spacing:.01em}
-.ctarow{display:flex;gap:1rem;justify-content:center;align-items:center;flex-wrap:wrap;animation:up .7s .55s both;margin-top:.25rem}
-.btn{display:inline-block;padding:.72rem 1.8rem;border-radius:.5rem;font-size:.85rem;font-weight:500;text-decoration:none;transition:all .22s;letter-spacing:.02em}
-.bp,.bn{background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;box-shadow:0 0 0 rgba(56,189,248,0)}
+.hsub{margin-bottom:2.75rem;animation:up .7s .4s both;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.hroleline{display:flex;align-items:center;justify-content:center;gap:.7rem;flex-wrap:wrap}
+.hrole{font-size:clamp(1.05rem,2.2vw,1.22rem);color:var(--text);font-weight:600;letter-spacing:-.022em}
+.hatsep{width:1px;height:15px;background:var(--border2);flex-shrink:0;display:inline-block}
+.horg{font-size:clamp(1.05rem,2.2vw,1.22rem);color:var(--subtle);font-weight:400;letter-spacing:-.015em}
+.ycw{font-family:'JetBrains Mono',monospace;font-size:.57rem;color:var(--rose);background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.25);padding:.12rem .45rem;border-radius:.25rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;vertical-align:middle;margin-left:.35rem}
+.hmetaline{display:flex;align-items:center;justify-content:center;gap:.55rem;font-size:.87rem;color:var(--muted);letter-spacing:.01em;flex-wrap:wrap}
+.hmetasep{color:var(--border2)}
+.ctarow{display:flex;gap:.9rem;justify-content:center;align-items:center;flex-wrap:wrap;animation:up .7s .55s both;margin-top:.35rem}
+.btn{display:inline-block;padding:.75rem 1.9rem;border-radius:.5rem;font-size:.84rem;font-weight:500;text-decoration:none;transition:all .22s;letter-spacing:.02em}
+.bp,.bn{background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff}
 .bp:hover,.bn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(56,189,248,.28)}
 .bs{background:transparent;color:var(--subtle);border:1px solid var(--border2)}
 .bs:hover{color:var(--text);border-color:rgba(255,255,255,.2);transform:translateY(-2px)}
-.ctalink{display:inline-flex;align-items:center;gap:.3rem;color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:500;padding:.72rem .4rem;transition:color .22s;letter-spacing:.02em;position:relative}
-.ctalink::after{content:'';position:absolute;bottom:.6rem;left:.4rem;right:.4rem;height:1px;background:var(--subtle);transform:scaleX(0);transform-origin:left;transition:transform .28s}
-.ctalink:hover{color:var(--text)}
-.ctalink:hover::after{transform:scaleX(1)}
+.ctalink{display:inline-block;padding:.75rem 1.9rem;border-radius:.5rem;font-size:.84rem;font-weight:500;text-decoration:none;transition:all .22s;letter-spacing:.02em;color:var(--subtle);border:1px solid rgba(255,255,255,.1)}
+.ctalink:hover{color:var(--text);border-color:rgba(129,140,248,.45);box-shadow:0 0 28px rgba(129,140,248,.12);transform:translateY(-2px)}
 .sdot{position:absolute;bottom:1.75rem;left:50%;transform:translateX(-50%);z-index:1;display:flex;flex-direction:column;align-items:center;gap:.5rem}
 .sbar{width:1px;height:48px;background:linear-gradient(var(--blue),transparent);animation:drop 2s ease-in-out infinite}
 .slbl{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
@@ -170,11 +171,25 @@ h1 .g{background:linear-gradient(120deg,var(--blue),var(--indigo) 50%,var(--rose
 .eduinst{font-size:.9rem;font-weight:600;margin-bottom:.4rem;line-height:1.35}
 .eduyear{font-size:.78rem;color:var(--muted)}
 
+/* ─── Projects ─── */
+#projbg{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:.75rem;overflow:hidden;margin-top:2.5rem}
+.pc{background:var(--s1);padding:1.75rem 1.6rem;transition:background .25s;position:relative}
+.pc:hover{background:var(--s2)}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.pc:nth-child(1)::before{background:var(--blue)}.pc:nth-child(2)::before{background:var(--indigo)}.pc:nth-child(3)::before{background:var(--rose)}
+.pc:nth-child(4)::before{background:#34d399}.pc:nth-child(5)::before{background:#fb923c}.pc:nth-child(6)::before{background:var(--blue)}
+.pn{font-size:.92rem;font-weight:600;color:var(--text);margin-bottom:.45rem;letter-spacing:-.01em}
+.pd{font-size:.82rem;color:var(--muted);line-height:1.6;margin-bottom:1.1rem}
+.ptags{display:flex;gap:.35rem;flex-wrap:wrap}
+.pt{font-family:'JetBrains Mono',monospace;font-size:.63rem;color:var(--subtle);background:rgba(255,255,255,.04);border:1px solid var(--border);padding:.18rem .45rem;border-radius:.2rem;letter-spacing:.02em}
+
 /* ─── Contact ─── */
 #ctbg{background:var(--s1);border-top:1px solid var(--border)}
 .ctinner{max-width:640px;margin:0 auto;text-align:center}
-.ctheading{font-size:clamp(2.4rem,6vw,4rem);font-weight:700;letter-spacing:-.04em;line-height:1.05;margin-bottom:2.5rem;color:var(--text)}
+.ctheading{font-size:clamp(2.4rem,6vw,4rem);font-weight:700;letter-spacing:-.04em;line-height:1.05;margin-bottom:1rem;color:var(--text)}
 .ctheading span{background:linear-gradient(120deg,var(--blue) 10%,var(--indigo));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ctsub{font-size:.9rem;color:var(--muted);line-height:1.65;margin-bottom:2.5rem;max-width:400px;margin-left:auto;margin-right:auto}
 .cemail{font-size:clamp(1.05rem,2.5vw,1.35rem);color:var(--subtle);text-decoration:none;display:inline-block;transition:color .25s;margin-bottom:2.75rem;font-weight:500;letter-spacing:-.015em;position:relative}
 .cemail::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--blue),var(--indigo));transform:scaleX(0);transform-origin:left;transition:transform .32s ease}
 .cemail:hover{color:var(--text)}
@@ -194,10 +209,12 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;jus
   .sgrid{grid-template-columns:repeat(2,1fr)}.sc:nth-child(2){border-right:none}.sc:nth-child(3){border-top:1px solid var(--border)}
   .skgrid{grid-template-columns:1fr}
   .edugrid{grid-template-columns:1fr}
+  .pgrid{grid-template-columns:1fr 1fr}
   footer{flex-direction:column;gap:.5rem;text-align:center}
 }
 @media(max-width:480px){
   .sgrid{grid-template-columns:1fr}.sc{border-right:none!important;border-bottom:1px solid var(--border)}
+  .pgrid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -212,6 +229,7 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;jus
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -222,12 +240,20 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;jus
   <div class="hi">
     <h1>Shivansh Das</h1>
     <div class="hsub">
-      <span class="hrole">Developer Relations Engineer <span class="hcomp">@ RunAnywhere <span class="ycw">YC W26</span></span></span>
-      <span class="hmeta">Co-Founder @ Singularity &nbsp;&middot;&nbsp; Delhi, India</span>
+      <div class="hroleline">
+        <span class="hrole">Developer Relations Engineer</span>
+        <span class="hatsep"></span>
+        <span class="horg">RunAnywhere <span class="ycw">YC W26</span></span>
+      </div>
+      <div class="hmetaline">
+        <span>Co-Founder @ Singularity</span>
+        <span class="hmetasep">·</span>
+        <span>Delhi, India</span>
+      </div>
     </div>
     <div class="ctarow">
-      <a href="#experience" class="btn bn">View Experience &nbsp;→</a>
-      <a href="#contact" class="ctalink">Get in Touch &nbsp;↗</a>
+      <a href="#experience" class="btn bn">View Experience</a>
+      <a href="#contact" class="ctalink">Get in Touch</a>
     </div>
   </div>
   <div class="sdot"><div class="sbar"></div><span class="slbl">scroll</span></div>
@@ -482,11 +508,54 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;jus
   </div>
 </div>
 
+<!-- Projects -->
+<div id="projbg">
+  <div class="wrap" id="projects">
+    <div class="r"><p class="lbl">// projects</p></div>
+    <div class="r d1"><h2 class="stitle">What I've <span>Built</span></h2></div>
+    <div class="r d2"><div class="rule"></div></div>
+    <div class="pgrid">
+      <div class="pc r">
+        <div class="pn">Standup Bot</div>
+        <div class="pd">Automates async standups with structured daily summaries logged to Google Sheets via Slack — zero manual overhead.</div>
+        <div class="ptags"><span class="pt">Slack API</span><span class="pt">Python</span><span class="pt">Google Sheets</span></div>
+      </div>
+      <div class="pc r d1">
+        <div class="pn">Uptime Monitor</div>
+        <div class="pd">Zero-cost URL health monitoring with instant Slack alerts — runs entirely on GitHub Actions, no servers required.</div>
+        <div class="ptags"><span class="pt">GitHub Actions</span><span class="pt">Python</span></div>
+      </div>
+      <div class="pc r d2">
+        <div class="pn">PR Digest</div>
+        <div class="pd">Automated weekly digest that surfaces stale pull requests before they block engineering velocity.</div>
+        <div class="ptags"><span class="pt">GitHub API</span><span class="pt">GitHub Actions</span></div>
+      </div>
+      <div class="pc r">
+        <div class="pn">Release Notes Drafter</div>
+        <div class="pd">Converts PR titles into user-friendly release notes using an LLM, then posts them to Notion automatically.</div>
+        <div class="ptags"><span class="pt">Groq LLM</span><span class="pt">Notion API</span><span class="pt">Python</span></div>
+      </div>
+      <div class="pc r d1">
+        <div class="pn">KB Search Bot</div>
+        <div class="pd">Natural language search across an entire Notion workspace, accessible through a Telegram bot powered by Groq.</div>
+        <div class="ptags"><span class="pt">Notion API</span><span class="pt">Groq</span><span class="pt">Telegram</span></div>
+      </div>
+      <div class="pc r d2">
+        <div class="pn">Team Metrics Digest</div>
+        <div class="pd">Weekly GitHub repository health report — PRs, issues, and contributor activity — delivered to Slack automatically.</div>
+        <div class="ptags"><span class="pt">GitHub API</span><span class="pt">Google Sheets</span><span class="pt">Python</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Contact -->
 <div id="ctbg">
   <div class="wrap" id="contact">
     <div class="ctinner r">
+      <p class="lbl">// contact</p>
       <h2 class="ctheading">Let's <span>Build Together</span></h2>
+      <p class="ctsub">Open to conversations about DevRel, product strategy, and developer communities.</p>
       <a href="mailto:shivanshdas@gmail.com" class="cemail">shivanshdas@gmail.com</a>
       <div class="socrow">
         <a href="https://www.linkedin.com/in/shivansh-das" target="_blank" rel="noopener" class="soc">
