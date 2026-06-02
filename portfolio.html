@@ -413,15 +413,6 @@ nav a.active::after { width: 50%; }
 .b-bio { grid-column: span 7; grid-row: span 2; }
 .b-term { grid-column: span 5; grid-row: span 2; background: #07070c !important; border-color: rgba(255,255,255,0.04); }
 
-.open-role-text {
-    color: var(--text-main);
-    font-weight: 500;
-    font-size: 0.95rem;
-    margin-top: 1rem;
-    border-left: 2px solid var(--cyan);
-    padding-left: 0.75rem;
-}
-
 .term-header {
     background: rgba(255,255,255,0.03);
     padding: 0.8rem 1.2rem;
@@ -786,15 +777,15 @@ footer {
     .hero-stats { flex-direction: column; gap: 1.5rem; }
 }
 @media (max-width: 768px) {
-    .hero-title, .hero-subtitle {
-        white-space: normal; 
-    }
-    .hero-subtitle {
-        min-height: 3.8rem; /* Prevents stats from shifting down during typewriter animation */
-    }
-}
-
-.hero-stats {
+    /* Tighten global section spacing on mobile */
+    section { padding: 2.5rem 1rem; }
+    .section-header { margin-bottom: 1.5rem; }
+    .section-title { font-size: 2rem; }
+    
+    /* Hide navigation on touch */
+    nav { display: none; } 
+    
+    /* 1. Sleeker, Pixel-Perfect Timeline & Experience Cards */
     .timeline { padding-left: 1rem; gap: 1.5rem; }
     .timeline::before { left: 0px; width: 1px; background: linear-gradient(to bottom, var(--cyan), var(--purple), transparent); }
     .exp-node { 
@@ -855,13 +846,8 @@ footer {
     .project-tags { gap: 0.4rem; }
     .project-tags span { font-size: 0.65rem; padding: 0.25rem 0.5rem; border-radius: 4px; }
     
-    /* Single-line constraints for mobile text */
-    .open-role-text { font-size: clamp(0.65rem, 2.9vw, 0.95rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 0.75rem; }
-    
-    /* Sleeker Education Cards with forced single-line */
+    /* Sleeker Education Cards */
     .edu-card { padding: 1.25rem; border-radius: 12px; }
-    .edu-card h3 { font-size: clamp(0.75rem, 3.5vw, 1rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 0.1rem; }
-    .edu-card p { font-size: clamp(0.65rem, 2.8vw, 0.85rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     
     /* Footer */
     footer { flex-direction: column; gap: 1rem; text-align: center; }
@@ -947,7 +933,7 @@ footer {
             <p style="color: var(--text-muted); font-size: 1rem;">
                 Proven ability to ship fast and communicate clearly—from designing internal automation systems to crafting developer experiences that reduce onboarding friction and accelerate team productivity.
             </p>
-            <p class="open-role-text">
+            <p style="color: var(--text-main); font-weight: 500; font-size: 0.95rem; margin-top: 1rem; border-left: 2px solid var(--cyan); padding-left: 0.75rem;">
                 Open to: Software Eng · DevRel · Product · PM
             </p>
         </div>
