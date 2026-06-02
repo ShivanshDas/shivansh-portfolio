@@ -328,11 +328,15 @@ nav a.active::after { width: 50%; }
     max-width: 900px;
     margin-bottom: 2.5rem; /* Tightened from 3.5rem */
     white-space: nowrap;
+    min-height: 2rem; /* Prevents height jumping when empty */
 }
 
 @media (max-width: 768px) {
     .hero-title, .hero-subtitle {
         white-space: normal; 
+    }
+    .hero-subtitle {
+        min-height: 3.5rem; /* Pre-allocate space for 2 lines on mobile so typing animation doesn't push stats down */
     }
 }
 
@@ -413,7 +417,7 @@ nav a.active::after { width: 50%; }
 .b-bio { grid-column: span 7; grid-row: span 2; }
 .b-term { grid-column: span 5; grid-row: span 2; background: #07070c !important; border-color: rgba(255,255,255,0.04); }
 
-.open-role-text {
+.open-to-text {
     color: var(--text-main);
     font-weight: 500;
     font-size: 0.95rem;
@@ -783,82 +787,70 @@ footer {
 @media (max-width: 1024px) {
     .b-bio { grid-column: span 12; }
     .b-term { grid-column: span 12; }
-    .hero-stats { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
-    .stat-item { width: 40%; }
+    .hero-stats { flex-direction: column; gap: 1.5rem; }
 }
 @media (max-width: 768px) {
-    /* 1. Mobile Navigation (Horizontal scroll, no wrapping) */
-    nav { 
-        width: 90vw;
-        max-width: 380px;
-        overflow-x: auto;
-        justify-content: flex-start;
-        -webkit-overflow-scrolling: touch;
-        padding: 0.5rem;
-    }
-    nav::-webkit-scrollbar { display: none; }
-    nav a { white-space: nowrap; font-size: 0.75rem; padding: 0.6rem 1rem; }
-
-    .hero-title, .hero-subtitle {
-        white-space: normal; 
-    }
-    .hero-subtitle {
-        min-height: 3.8rem; /* Prevents stats from shifting down during typewriter animation */
-    }
-
-    .hero-stats {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
+    /* Tighten global section spacing on mobile */
+    section { padding: 2.5rem 1rem; }
+    .section-header { margin-bottom: 1.5rem; }
+    .section-title { font-size: 2rem; }
     
+    /* Hide navigation on touch */
+    nav { display: none; } 
+    
+    /* 1. Sleeker, Pixel-Perfect Timeline & Experience Cards */
     .timeline { padding-left: 1rem; gap: 1.5rem; }
     .timeline::before { left: 0px; width: 1px; background: linear-gradient(to bottom, var(--cyan), var(--purple), transparent); }
     .exp-node { 
-        left: -1rem; 
-        top: 1.4rem; 
+        left: -1rem; /* Pushes to exactly where the line is */
+        top: 1.4rem; /* Aligns visually with the top of the card */
         width: 9px; 
         height: 9px; 
         border-width: 2px; 
-        transform: translateX(-4px); 
+        transform: translateX(-4px); /* Mathematically centers a 9px node on a 1px line starting at 0 */
     }
     .exp-card { padding: 1.25rem 0.85rem; border-radius: 12px; }
     .exp-header { flex-direction: column; gap: 0.15rem; align-items: flex-start; margin-bottom: 0.8rem; width: 100%; overflow: hidden; }
-    
-    /* Forced Single Line scaling for Experience */
-    .exp-role { font-size: clamp(0.7rem, 3.2vw, 0.95rem); line-height: 1.2; margin-bottom: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; letter-spacing: -0.01em; display: block; }
-    .exp-company { font-size: clamp(0.6rem, 2.8vw, 0.75rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; display: block; letter-spacing: -0.01em; }
-    .exp-company span { display: none !important; } /* FORCED HIDDEN ON MOBILE */
-    
+    .exp-role { font-size: clamp(0.75rem, 3.8vw, 0.95rem); line-height: 1.2; margin-bottom: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; letter-spacing: -0.01em; }
+    .exp-company { font-size: clamp(0.65rem, 3.2vw, 0.75rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; display: block; letter-spacing: -0.01em; }
+    .exp-company span { display: none; } /* Hides NOW and Co-Founder badges on mobile */
     .exp-date { font-size: 0.65rem; padding: 0; background: transparent; border: none; margin-top: 0.1rem; opacity: 0.7; }
     .exp-list li { font-size: 0.85rem; margin-bottom: 0.5rem; line-height: 1.5; padding-left: 1.2rem; }
     
-    /* 2. Restored Desktop-Style Toolkit Rows for Mobile */
-    .skrows { gap: 0.5rem; border: none; margin-top: 1.5rem; }
+    /* 2. App-Style Toolkit Rows */
+    .skrows { gap: 0.75rem; border: none; margin-top: 1.5rem; }
     .skrow { 
-        grid-template-columns: 100px 1fr; /* Retains Side-by-Side View */
-        gap: 0.5rem; 
-        padding: 1rem 0.8rem; 
+        grid-template-columns: 1fr; 
+        gap: 0.8rem; 
+        padding: 1.25rem 1rem; 
         border-radius: 12px; 
         background: rgba(255,255,255,0.015); 
         border: 1px solid rgba(255,255,255,0.04);
     }
     .skcat { 
-        font-size: 0.65rem; 
+        font-size: 0.75rem; 
+        border-bottom: none; 
         padding-bottom: 0; 
         display: flex; 
-        align-items: flex-start; 
+        align-items: center; 
         width: 100%; 
         opacity: 0.9;
-        border-bottom: none;
     }
-    .skcat::after { display: none; } /* Removes the line separator */
-    .skpills { gap: 0.3rem; }
+    /* Elegant line separator next to category */
+    .skcat::after {
+        content: '';
+        flex-grow: 1;
+        height: 1px;
+        background: rgba(255,255,255,0.05);
+        margin-left: 0.75rem;
+    }
+    .skpills { gap: 0.4rem; }
     .sp { 
-        font-size: 0.65rem; 
-        padding: 0.2rem 0.4rem; 
+        font-size: 0.7rem; 
+        padding: 0.3rem 0.6rem; 
         background: rgba(255,255,255,0.02);
         border-color: rgba(255,255,255,0.06);
-        border-radius: 4px;
+        border-radius: 4px; /* Sharper, denser look */
     }
     
     /* 3. Sleeker Bento & Project Cards */
@@ -867,13 +859,12 @@ footer {
     .project-tags { gap: 0.4rem; }
     .project-tags span { font-size: 0.65rem; padding: 0.25rem 0.5rem; border-radius: 4px; }
     
-    /* Single-line constraints for mobile text */
-    .open-role-text { font-size: clamp(0.55rem, 2.5vw, 0.85rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 0.75rem; display: block; }
-    
-    /* Sleeker Education Cards with forced single-line */
+    /* Sleeker Education Cards & Single Line Typography */
     .edu-card { padding: 1.25rem; border-radius: 12px; }
-    .edu-card h3 { font-size: clamp(0.7rem, 3.2vw, 1rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 0.1rem; display: block; }
-    .edu-card p { font-size: clamp(0.6rem, 2.8vw, 0.85rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+    .edu-card h3 { font-size: clamp(0.75rem, 3.5vw, 1.15rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .edu-card p { font-size: clamp(0.65rem, 3vw, 0.9rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    
+    .open-to-text { font-size: clamp(0.65rem, 2.8vw, 0.95rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     
     /* Footer */
     footer { flex-direction: column; gap: 1rem; text-align: center; }
@@ -959,7 +950,7 @@ footer {
             <p style="color: var(--text-muted); font-size: 1rem;">
                 Proven ability to ship fast and communicate clearly—from designing internal automation systems to crafting developer experiences that reduce onboarding friction and accelerate team productivity.
             </p>
-            <p class="open-role-text">
+            <p class="open-to-text">
                 Open to: Software Eng · DevRel · Product · PM
             </p>
         </div>
