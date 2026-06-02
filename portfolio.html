@@ -779,15 +779,21 @@ footer {
     /* Tighten global section spacing on mobile */
     section { padding: 2.5rem 1rem; }
     .section-header { margin-bottom: 1.5rem; }
+    .section-title { font-size: 2rem; } /* Scaled down for a sharper look */
     
     /* Hide navigation on touch */
     nav { display: none; } 
     
-    /* Sleeker Timeline & Experience Cards */
-    .timeline { padding-left: 1.25rem; gap: 1rem; }
-    .timeline::before { left: 0px; }
-    .exp-node { left: -1.65rem; width: 12px; height: 12px; }
-    .exp-card { padding: 1.25rem; }
+    /* Sleeker Timeline & Experience Cards (App-style layout) */
+    .timeline { padding-left: 1.5rem; gap: 1rem; }
+    .timeline::before { left: 4px; } /* Mathematically aligned line */
+    .exp-node { left: -1.5rem; top: 6px; width: 10px; height: 10px; border-width: 2px; } /* Sharper nodes */
+    .exp-card { padding: 1.2rem; }
+    .exp-header { flex-direction: column; gap: 0.4rem; align-items: flex-start; } /* Stacked header for clean reading */
+    .exp-role { font-size: 1.1rem; margin-bottom: 0; }
+    .exp-company { font-size: 0.8rem; flex-wrap: wrap; }
+    .exp-date { font-size: 0.7rem; padding: 0.15rem 0.5rem; margin-top: 0.2rem; }
+    .exp-list li { font-size: 0.85rem; margin-bottom: 0.3rem; line-height: 1.5; }
     
     /* Sleeker Bento & Project Cards */
     .bento-item { padding: 1.5rem; }
@@ -797,8 +803,11 @@ footer {
     .project-tags { gap: 0.4rem; }
     .project-tags span { font-size: 0.65rem; padding: 0.2rem 0.5rem; }
     
-    /* Sleeker Toolkit Rows */
-    .skrow { grid-template-columns: 1fr; gap: 0.5rem; padding: 0.8rem 1rem; }
+    /* Sleeker Toolkit Rows (App-style dividers) */
+    .skrow { grid-template-columns: 1fr; gap: 0.6rem; padding: 1rem; border-radius: 8px; background: rgba(255,255,255,0.015); }
+    .skcat { font-size: 0.7rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.4rem; display: block; width: 100%; }
+    .skpills { gap: 0.4rem; }
+    .sp { font-size: 0.7rem; padding: 0.2rem 0.5rem; }
     
     /* Sleeker Education Cards */
     .edu-card { padding: 1.25rem; }
