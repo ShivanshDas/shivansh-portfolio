@@ -778,7 +778,7 @@ footer {
 }
 @media (max-width: 768px) {
     /* Tighten global section spacing on mobile */
-    section { padding: 2.5rem 1.25rem; }
+    section { padding: 2.5rem 1rem; }
     .section-header { margin-bottom: 1.5rem; }
     .section-title { font-size: 2rem; }
     
@@ -786,22 +786,22 @@ footer {
     nav { display: none; } 
     
     /* 1. Sleeker, Pixel-Perfect Timeline & Experience Cards */
-    .timeline { padding-left: 1.25rem; gap: 1.5rem; }
+    .timeline { padding-left: 1rem; gap: 1.5rem; }
     .timeline::before { left: 0px; width: 1px; background: linear-gradient(to bottom, var(--cyan), var(--purple), transparent); }
     .exp-node { 
-        left: -1.25rem; /* Pushes to exactly where the line is */
-        top: 1.6rem; /* Aligns visually with the top of the card */
+        left: -1rem; /* Pushes to exactly where the line is */
+        top: 1.4rem; /* Aligns visually with the top of the card */
         width: 9px; 
         height: 9px; 
         border-width: 2px; 
         transform: translateX(-4px); /* Mathematically centers a 9px node on a 1px line starting at 0 */
     }
-    .exp-card { padding: 1.25rem 1rem; border-radius: 12px; }
+    .exp-card { padding: 1.25rem 0.85rem; border-radius: 12px; }
     .exp-header { flex-direction: column; gap: 0.15rem; align-items: flex-start; margin-bottom: 0.8rem; width: 100%; overflow: hidden; }
-    .exp-role { font-size: 1rem; line-height: 1.2; margin-bottom: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
-    .exp-company { font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; display: block; }
+    .exp-role { font-size: clamp(0.75rem, 3.8vw, 0.95rem); line-height: 1.2; margin-bottom: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; letter-spacing: -0.01em; }
+    .exp-company { font-size: clamp(0.65rem, 3.2vw, 0.75rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; display: block; letter-spacing: -0.01em; }
     .exp-company span { display: none; } /* Hides NOW and Co-Founder badges on mobile */
-    .exp-date { font-size: 0.7rem; padding: 0; background: transparent; border: none; margin-top: 0.1rem; opacity: 0.7; }
+    .exp-date { font-size: 0.65rem; padding: 0; background: transparent; border: none; margin-top: 0.1rem; opacity: 0.7; }
     .exp-list li { font-size: 0.85rem; margin-bottom: 0.5rem; line-height: 1.5; padding-left: 1.2rem; }
     
     /* 2. App-Style Toolkit Rows */
@@ -931,7 +931,7 @@ footer {
                 IT professional with hands-on experience across Software Engineering, AI/ML, Automation, and Developer Relations. Currently driving developer adoption at RunAnywhere while building a portfolio of open-source tools used by engineering teams daily.
             </p>
             <p style="color: var(--text-muted); font-size: 1rem;">
-                Proven ability to ship fast and communicate clearly from designing internal automation systems to crafting developer experiences that reduce onboarding friction and accelerate team productivity.
+                Proven ability to ship fast and communicate clearly—from designing internal automation systems to crafting developer experiences that reduce onboarding friction and accelerate team productivity.
             </p>
             <p style="color: var(--text-main); font-weight: 500; font-size: 0.95rem; margin-top: 1rem; border-left: 2px solid var(--cyan); padding-left: 0.75rem;">
                 Open to: Software Eng · DevRel · Product · PM
@@ -944,7 +944,7 @@ footer {
                 <div class="term-btn r"></div>
                 <div class="term-btn y"></div>
                 <div class="term-btn g"></div>
-                <span class="term-title">profile.json</span>
+                <span class="term-title">profile.json — -zsh</span>
             </div>
             <div class="term-body">
                 <div class="term-row"><span class="tj-key">{</span></div>
