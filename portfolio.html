@@ -52,7 +52,13 @@ body {
     color: var(--text-main);
     overflow-x: hidden;
     line-height: 1.6;
-    cursor: none; /* Custom premium cursor */
+}
+
+/* Custom premium cursor ONLY for desktop hover states */
+@media (hover: hover) and (pointer: fine) {
+    body {
+        cursor: none;
+    }
 }
 
 ::selection {
@@ -131,6 +137,7 @@ section {
     background: var(--cyan);
 }
 
+/* Custom Cursor Elements - Hidden on mobile */
 #cursor-dot, #cursor-outline {
     position: fixed;
     top: 0;
@@ -139,6 +146,12 @@ section {
     border-radius: 50%;
     z-index: 9999;
     pointer-events: none;
+    display: none;
+}
+@media (hover: hover) and (pointer: fine) {
+    #cursor-dot, #cursor-outline {
+        display: block;
+    }
 }
 #cursor-dot {
     width: 6px;
@@ -226,6 +239,9 @@ body.hovering #cursor-dot {
     box-shadow: 0 0 10px var(--cyan);
 }
 
+/* =========================================
+   NAVIGATION
+========================================= */
 nav {
     position: fixed;
     bottom: 2rem;
@@ -273,6 +289,9 @@ nav a::after {
 }
 nav a.active::after { width: 50%; }
 
+/* =========================================
+   HERO (Centered Layout)
+========================================= */
 #hero {
     min-height: 100vh;
     display: flex;
@@ -356,6 +375,9 @@ nav a.active::after { width: 50%; }
     }
 }
 
+/* =========================================
+   BENTO PROFILE & TERMINAL
+========================================= */
 .bento-grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -416,6 +438,9 @@ nav a.active::after { width: 50%; }
 .tj-str { color: #f07178; }
 .cursor-blink { display: inline-block; width: 8px; height: 15px; background: var(--cyan); animation: blink 1s step-end infinite; vertical-align: middle; }
 
+/* =========================================
+   SKILLS (Technical Toolkit)
+========================================= */
 .skrows { display: flex; flex-direction: column; gap: 0.5rem; width: 100%; margin-top: 1rem; }
 .skrow { position: relative; overflow: hidden; display: grid; grid-template-columns: 180px 1fr; gap: 1rem; align-items: center; padding: 1.2rem; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid var(--border); transition: all 0.3s; border-left: 2px solid transparent; }
 .skrow::before { content: ""; position: absolute; inset: 0; background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%); z-index: 1; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
@@ -444,6 +469,9 @@ nav a.active::after { width: 50%; }
 .sp { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.4rem 0.8rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 6px; color: var(--text-muted); transition: all 0.2s; cursor: default; }
 .sp:hover { color: var(--cyan); border-color: rgba(0, 240, 255, 0.4); background: rgba(0, 240, 255, 0.05); box-shadow: 0 0 10px rgba(0,240,255,0.1); }
 
+/* =========================================
+   EXPERIENCE (Circuit Timeline)
+========================================= */
 .timeline {
     position: relative;
     padding-left: 3rem;
@@ -534,6 +562,9 @@ nav a.active::after { width: 50%; }
 }
 .exp-list li strong { color: var(--text-main); }
 
+/* =========================================
+   PROJECTS (3D Tilt Cards)
+========================================= */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -580,6 +611,9 @@ nav a.active::after { width: 50%; }
     border-radius: 4px;
 }
 
+/* =========================================
+   EDUCATION
+========================================= */
 .edu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -606,6 +640,9 @@ nav a.active::after { width: 50%; }
     font-size: 0.9rem;
 }
 
+/* =========================================
+   CONTACT & FOOTER
+========================================= */
 #contact {
     text-align: center;
     padding-bottom: 8rem;
@@ -674,6 +711,9 @@ footer {
     margin: 0 auto;
 }
 
+/* =========================================
+   ANIMATIONS & RESPONSIVE GRID COLLAPSE
+========================================= */
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
@@ -728,7 +768,7 @@ footer {
     <div id="progress-container"><div id="progress-bar"></div></div>
 </div>
 
-<!-- Custom Cursor -->
+<!-- Custom Cursor (Auto-disabled on mobile touch devices) -->
 <div id="cursor-dot"></div>
 <div id="cursor-outline"></div>
 
@@ -1121,6 +1161,12 @@ footer {
 </footer>
 
 <script>
+// Mobile Detection helper to selectively bypass CPU-heavy effects
+const isMobile = window.matchMedia("(max-width: 768px)").matches || ('ontouchstart' in window);
+
+/* =========================================
+   1. PRELOADER BOOT SEQUENCER
+========================================= */
 document.addEventListener("DOMContentLoaded", () => {
     const lines = document.querySelectorAll(".term-line");
     const progress = document.getElementById("progress-bar");
@@ -1157,34 +1203,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.body.style.overflowY = "hidden";
 
+/* =========================================
+   2. PHYSICS CURSOR (Disabled on touch devices)
+========================================= */
 const dot = document.getElementById("cursor-dot");
 const outline = document.getElementById("cursor-outline");
 let mx = window.innerWidth/2, my = window.innerHeight/2;
 let ox = mx, oy = my;
 
-window.addEventListener("mousemove", e => {
-    mx = e.clientX;
-    my = e.clientY;
-    dot.style.left = mx + "px";
-    dot.style.top = my + "px";
-});
+if (!isMobile) {
+    window.addEventListener("mousemove", e => {
+        mx = e.clientX;
+        my = e.clientY;
+        dot.style.left = mx + "px";
+        dot.style.top = my + "px";
+    });
 
-function renderCursor() {
-    ox += (mx - ox) * 0.15;
-    oy += (my - oy) * 0.15;
-    outline.style.left = ox + "px";
-    outline.style.top = oy + "px";
-    requestAnimationFrame(renderCursor);
+    function renderCursor() {
+        ox += (mx - ox) * 0.15;
+        oy += (my - oy) * 0.15;
+        outline.style.left = ox + "px";
+        outline.style.top = oy + "px";
+        requestAnimationFrame(renderCursor);
+    }
+    renderCursor();
+
+    const interactables = document.querySelectorAll('a, button, .bento-item, .tilt-card, .skrow');
+    interactables.forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+    });
 }
-renderCursor();
 
-const interactables = document.querySelectorAll('a, button, .bento-item, .tilt-card, .skrow');
-interactables.forEach(el => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-    el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-});
-
+/* =========================================
+   3. BENTO/CARD MOUSE GLOW (Mouse coordinates check)
+========================================= */
 document.addEventListener("mousemove", e => {
+    // Skip calculation on mobile touch event scroll actions
+    if (isMobile) return;
     for(const card of document.querySelectorAll(".bento-item, .skrow")) {
         const rect = card.getBoundingClientRect(),
               x = e.clientX - rect.left,
@@ -1194,27 +1250,35 @@ document.addEventListener("mousemove", e => {
     }
 });
 
-const tiltCards = document.querySelectorAll('.tilt-card');
-tiltCards.forEach(card => {
-    card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+/* =========================================
+   4. TILT PHYSICS (Safely disabled on phone viewport)
+========================================= */
+if (!isMobile) {
+    const tiltCards = document.querySelectorAll('.tilt-card');
+    tiltCards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = ((y - centerY) / centerY) * -10;
+            const rotateY = ((x - centerX) / centerX) * 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
         
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = ((y - centerY) / centerY) * -10;
-        const rotateY = ((x - centerX) / centerX) * 10;
-        
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        });
     });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-    });
-});
+}
 
+/* =========================================
+   5. OPTIMIZED PARTICLES NET CANVAS
+========================================= */
 const cvs = document.getElementById('bg-canvas');
 const ctx = cvs.getContext('2d');
 let w, h;
@@ -1224,7 +1288,11 @@ function initCanvas() {
     w = cvs.width = window.innerWidth;
     h = cvs.height = window.innerHeight;
     particles.length = 0;
-    const num = (w * h) / 16000;
+    
+    // Low performance overhead on mobile: reduce particle count drastically
+    const factor = isMobile ? 32000 : 16000;
+    const num = (w * h) / factor;
+    
     for(let i = 0; i < num; i++) {
         particles.push({
             x: Math.random() * w,
@@ -1254,19 +1322,22 @@ function drawCanvas() {
         ctx.fill();
     });
     
-    for(let i=0; i<particles.length; i++) {
-        for(let j=i+1; j<particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const dist = dx*dx + dy*dy;
-            
-            if(dist < 15000) {
-                ctx.beginPath();
-                ctx.strokeStyle = `rgba(0, 240, 255, ${0.12 - (dist/15000)*0.12})`;
-                ctx.lineWidth = 0.8;
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
-                ctx.stroke();
+    // Completely skip computing distances on mobile to avoid CPU lag
+    if (!isMobile) {
+        for(let i=0; i<particles.length; i++) {
+            for(let j=i+1; j<particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = dx*dx + dy*dy;
+                
+                if(dist < 15000) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = `rgba(0, 240, 255, ${0.12 - (dist/15000)*0.12})`;
+                    ctx.lineWidth = 0.8;
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
             }
         }
     }
@@ -1274,6 +1345,9 @@ function drawCanvas() {
 }
 drawCanvas();
 
+/* =========================================
+   6. SCROLL REVEAL & TEXT SCRAMBLE DECODER
+========================================= */
 const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
 
 const scrambleText = (el) => {
@@ -1324,6 +1398,9 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+/* =========================================
+   7. TYPEWRITER EFFECT
+========================================= */
 function triggerHeroAnimations() {
     const subtitle = document.getElementById("typewriter");
     const text = "Building developer tools, communities, and open-source ecosystems.";
@@ -1341,6 +1418,9 @@ function triggerHeroAnimations() {
     setTimeout(type, 300);
 }
 
+/* =========================================
+   8. SCROLL ACTIVE LINK MONITOR
+========================================= */
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("nav a");
 
